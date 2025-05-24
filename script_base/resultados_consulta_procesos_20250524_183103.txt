@@ -1,0 +1,33 @@
+CONSULTA DE PROCESOS JUDICIALES
+Fecha y hora: 2025-05-24 18:31:03
+Total de procesos consultados: 2
+Procesos privados encontrados: 0
+Procesos fallidos: 0
+==================================================
+
+--------------------
+Radicado del proceso: 13670408900120250010000
+Información del proceso:
+  Demandante: No disponible
+  Demandado: No disponible
+  Juzgado: JUZGADO 001 PROMISCUO MUNICIPAL DE SAN PABLO
+  Departamento: BOLÍVAR
+  Tipo del proceso: Codigo General del Proceso
+  Clase del proceso: VERBALES SUMARIOS
+  Subclase del proceso: Resolución de compraventa
+  Última fecha de actuación: 2025-04-23
+--------------------
+
+--------------------
+Radicado del proceso: 20001418900120250009600
+Información del proceso:
+  Demandante: ALEXANDER CENTENO SAUCEDO
+  Demandado: JESUS ALIRIO CASTILLA ALVAREZ
+  Juzgado: JUZGADO 001 DE PEQUEÑAS CAUSAS  Y COMPETENCIA MÚLTIPLE DE VALLEDUPAR
+  Departamento: CESAR
+  Tipo del proceso: De Ejecución
+  Clase del proceso: Ejecutivo Singular
+  Subclase del proceso: Por sumas de dinero
+  Última fecha de actuación: 2025-03-25
+--------------------
+

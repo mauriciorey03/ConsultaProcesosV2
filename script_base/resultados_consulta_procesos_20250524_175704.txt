@@ -1,0 +1,148 @@
+CONSULTA DE PROCESOS JUDICIALES
+Fecha y hora: 2025-05-24 17:57:04
+Total de procesos consultados: 11
+==================================================
+
+--------------------
+Radicado del proceso: 13670408900120250010000
+Información del proceso:
+  Demandante: No disponible
+  Demandado: No disponible
+  Juzgado: JUZGADO 001 PROMISCUO MUNICIPAL DE SAN PABLO
+  Departamento: BOLÍVAR
+  Tipo del proceso: Codigo General del Proceso
+  Clase del proceso: VERBALES SUMARIOS
+  Subclase del proceso: Resolución de compraventa
+  Última fecha de actuación: 2025-04-23
+--------------------
+
+--------------------
+Radicado del proceso: 20001418900120250009600
+Información del proceso:
+  Demandante: ALEXANDER CENTENO SAUCEDO
+  Demandado: JESUS ALIRIO CASTILLA ALVAREZ
+  Juzgado: JUZGADO 001 DE PEQUEÑAS CAUSAS  Y COMPETENCIA MÚLTIPLE DE VALLEDUPAR
+  Departamento: CESAR
+  Tipo del proceso: De Ejecución
+  Clase del proceso: Ejecutivo Singular
+  Subclase del proceso: Por sumas de dinero
+  Última fecha de actuación: 2025-03-25
+--------------------
+
+--------------------
+Radicado del proceso: 13670408900120250005400
+Información del proceso:
+  Demandante: No disponible
+  Demandado: No disponible
+  Juzgado: JUZGADO 001 PROMISCUO MUNICIPAL DE SAN PABLO
+  Departamento: BOLÍVAR
+  Tipo del proceso: Codigo General del Proceso
+  Clase del proceso: OTROS PROCESOS
+  Subclase del proceso: En general / Sin subclase
+  Última fecha de actuación: 2025-04-29
+--------------------
+
+--------------------
+Radicado del proceso: 13670408900120250002800
+Información del proceso:
+  Demandante: No disponible
+  Demandado: No disponible
+  Juzgado: JUZGADO 001 PROMISCUO MUNICIPAL DE SAN PABLO
+  Departamento: BOLÍVAR
+  Tipo del proceso: Codigo General del Proceso
+  Clase del proceso: PROCESOS EJECUTIVOS
+  Subclase del proceso: SINGULARES
+  Última fecha de actuación: 2025-05-20
+--------------------
+
+--------------------
+Radicado del proceso: 13670408900120240030800
+Información del proceso:
+  Demandante: No disponible
+  Demandado: No disponible
+  Juzgado: JUZGADO 001 PROMISCUO MUNICIPAL DE SAN PABLO
+  Departamento: BOLÍVAR
+  Tipo del proceso: Codigo General del Proceso
+  Clase del proceso: MONITORIOS
+  Subclase del proceso: En general / Sin subclase
+  Última fecha de actuación: 2025-04-09
+--------------------
+
+--------------------
+Radicado del proceso: 13670408900120240057300
+Información del proceso:
+  Demandante: No disponible
+  Demandado: No disponible
+  Juzgado: JUZGADO 001 PROMISCUO MUNICIPAL DE SAN PABLO
+  Departamento: BOLÍVAR
+  Tipo del proceso: Codigo General del Proceso
+  Clase del proceso: VERBALES SUMARIOS
+  Subclase del proceso: En general / Sin subclase
+  Última fecha de actuación: 2025-05-07
+--------------------
+
+--------------------
+Radicado del proceso: 13670408900120240055600
+Información del proceso:
+  Demandante: No disponible
+  Demandado: No disponible
+  Juzgado: JUZGADO 001 PROMISCUO MUNICIPAL DE SAN PABLO
+  Departamento: BOLÍVAR
+  Tipo del proceso: Codigo General del Proceso
+  Clase del proceso: PROCESOS EJECUTIVOS
+  Subclase del proceso: SINGULARES
+  Última fecha de actuación: 2025-02-04
+--------------------
+
+--------------------
+Radicado del proceso: 13670408900120240045100
+Información del proceso:
+  Demandante: No disponible
+  Demandado: No disponible
+  Juzgado: JUZGADO 001 PROMISCUO MUNICIPAL DE SAN PABLO
+  Departamento: BOLÍVAR
+  Tipo del proceso: Codigo General del Proceso Fam
+  Clase del proceso: PROCESOS EJECUTIVOS
+  Subclase del proceso: En general / Sin subclase
+  Última fecha de actuación: 2025-03-19
+--------------------
+
+--------------------
+Radicado del proceso: 13670408900120240030400
+Información del proceso:
+  Demandante: No disponible
+  Demandado: No disponible
+  Juzgado: JUZGADO 001 PROMISCUO MUNICIPAL DE SAN PABLO
+  Departamento: BOLÍVAR
+  Tipo del proceso: Codigo General del Proceso
+  Clase del proceso: MONITORIOS
+  Subclase del proceso: En general / Sin subclase
+  Última fecha de actuación: 2025-05-14
+--------------------
+
+--------------------
+Radicado del proceso: 68001333301520240007300
+Información del proceso:
+  Demandante: DINIS MARTINEZ TOLOSA
+  Demandado: ELECTRIFICADORA DE SANTADER S.A ESP
+  Juzgado: DESPACHO 015 - JUZGADO ADMINISTRATIVO - SIN SECCIÓN - ORAL - BUCARAMANGA *
+  Departamento: SANTANDER
+  Tipo del proceso: Ordinario
+  Clase del proceso: Reparación Directa
+  Subclase del proceso: Sin Subclase de Proceso
+  Última fecha de actuación: 2024-11-25
+--------------------
+
+--------------------
+Radicado del proceso: 13160408900120240000600
+Información del proceso:
+  Demandante: No disponible
+  Demandado: No disponible
+  Juzgado: JUZGADO 001 PROMISCUO MUNICIPAL DE CANTAGALLO
+  Departamento: BOLÍVAR
+  Tipo del proceso: Codigo General del Proceso
+  Clase del proceso: EJECUTIVOS DE MENOR Y MINIMA CUANTIA
+  Subclase del proceso: En general / Sin subclase
+  Última fecha de actuación: 2024-04-12
+--------------------
+

@@ -1,0 +1,29 @@
+CONSULTA DE PROCESOS JUDICIALES
+==================================================
+
+--------------------
+Radicado del proceso: 68001310300420200015000
+Información del proceso:
+  Demandante: LUIS ARMANDO LESMES JIMENEZ
+  Demandado: ALFONSO LOPEZ MORANTES
+  Juzgado: JUZGADO 004 CIVIL DEL CIRCUITO DE BUCARAMANGA
+  Departamento: SANTANDER
+  Tipo del proceso: Declarativo
+  Clase del proceso: Verbal
+  Subclase del proceso: Otros
+  Última fecha de actuación: 2025-05-16
+--------------------
+
+--------------------
+Radicado del proceso: 13160408900120240000600
+Información del proceso:
+  Demandante: No disponible
+  Demandado: No disponible
+  Juzgado: JUZGADO 001 PROMISCUO MUNICIPAL DE CANTAGALLO
+  Departamento: BOLÍVAR
+  Tipo del proceso: Codigo General del Proceso
+  Clase del proceso: EJECUTIVOS DE MENOR Y MINIMA CUANTIA
+  Subclase del proceso: En general / Sin subclase
+  Última fecha de actuación: 2024-04-12
+--------------------
+
