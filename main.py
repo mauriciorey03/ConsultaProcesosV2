@@ -17,15 +17,25 @@ import logging
 from pathlib import Path
 from typing import List
 
-# Imports locales
-import sys
-import os
-sys.path.append(os.path.dirname(os.path.abspath(__file__)))
-from config import APIConfig, FileConfig, ProcessConfig, UIConfig, validate_config
-from api_client import RamaJudicialClient, RateLimitedClient
-from data_processor import ProcesosProcessor, ProcesoInfo
-from file_manager import FileManager, BackupManager, LogFileManager, verificar_espacio_disco
+# Agregar src al path para imports
+sys.path.insert(0, str(Path(__file__).parent / "src"))
 
+# Imports locales (ahora desde src/)
+try:
+    from config import APIConfig, FileConfig, ProcessConfig, UIConfig, validate_config
+    from api_client import RamaJudicialClient, RateLimitedClient
+    from data_processor import ProcesosProcessor, ProcesoInfo
+    from file_manager import FileManager, BackupManager, LogFileManager, verificar_espacio_disco
+except ImportError as e:
+    print("❌ Error importando módulos:")
+    print(f"   {e}")
+    print("🔧 Asegúrate de que todos los módulos en src/ estén completos")
+    print("📁 Estructura esperada:")
+    print("   src/config.py")
+    print("   src/api_client.py") 
+    print("   src/data_processor.py")
+    print("   src/file_manager.py")
+    sys.exit(1)
 
 # Configurar logging
 logger = logging.getLogger(__name__)
@@ -396,32 +406,37 @@ EJEMPLOS:
 
 def mostrar_info_configuracion():
     """Muestra información de la configuración actual"""
-    file_manager = FileManager()
-    resumen = file_manager.obtener_resumen_configuracion()
-    
-    print("CONFIGURACIÓN ACTUAL:")
-    print("=" * 50)
-    
-    print(f"\nArchivo Excel:")
-    print(f"  Ruta: {resumen['archivo_excel']['ruta']}")
-    print(f"  Existe: {resumen['archivo_excel']['existe']}")
-    
-    if resumen['archivo_excel']['info'].get('error'):
-        print(f"  Error: {resumen['archivo_excel']['info']['error']}")
-    else:
-        info = resumen['archivo_excel']['info']
-        print(f"  Filas: {info.get('filas_totales', 'N/A')}")
-        print(f"  Tamaño: {info.get('tamaño_bytes', 0)} bytes")
-    
-    print(f"\nDirectorio de salida:")
-    print(f"  Ruta: {resumen['directorio_salida']['ruta']}")
-    print(f"  Existe: {resumen['directorio_salida']['existe']}")
-    print(f"  Archivos existentes: {resumen['directorio_salida']['archivos_existentes']}")
-    
-    print(f"\nConfiguración:")
-    print(f"  Columna Excel: {resumen['configuracion']['columna_excel']}")
-    print(f"  Fila inicio: {resumen['configuracion']['fila_inicio']}")
-    print(f"  Encoding salida: {resumen['configuracion']['encoding_salida']}")
+    try:
+        file_manager = FileManager()
+        resumen = file_manager.obtener_resumen_configuracion()
+        
+        print("CONFIGURACIÓN ACTUAL:")
+        print("=" * 50)
+        
+        print(f"\nArchivo Excel:")
+        print(f"  Ruta: {resumen['archivo_excel']['ruta']}")
+        print(f"  Existe: {resumen['archivo_excel']['existe']}")
+        
+        if resumen['archivo_excel']['info'].get('error'):
+            print(f"  Error: {resumen['archivo_excel']['info']['error']}")
+        else:
+            info = resumen['archivo_excel']['info']
+            print(f"  Filas: {info.get('filas_totales', 'N/A')}")
+            print(f"  Tamaño: {info.get('tamaño_bytes', 0)} bytes")
+        
+        print(f"\nDirectorio de salida:")
+        print(f"  Ruta: {resumen['directorio_salida']['ruta']}")
+        print(f"  Existe: {resumen['directorio_salida']['existe']}")
+        print(f"  Archivos existentes: {resumen['directorio_salida']['archivos_existentes']}")
+        
+        print(f"\nConfiguración:")
+        print(f"  Columna Excel: {resumen['configuracion']['columna_excel']}")
+        print(f"  Fila inicio: {resumen['configuracion']['fila_inicio']}")
+        print(f"  Encoding salida: {resumen['configuracion']['encoding_salida']}")
+        
+    except Exception as e:
+        print(f"❌ Error mostrando configuración: {e}")
+        print("🔧 Asegúrate de completar todos los módulos en src/")
 
 
 def main():
@@ -449,16 +464,16 @@ def main():
                 es_valido, errores = file_manager.validar_configuracion()
                 
                 if es_valido:
-                    print(f"{UIConfig.SUCCESS_ICON} Configuración válida")
+                    print(f"✅ Configuración válida")
                     return 0
                 else:
-                    print(f"{UIConfig.ERROR_ICON} Errores en configuración:")
+                    print(f"❌ Errores en configuración:")
                     for error in errores:
                         print(f"  - {error}")
                     return 1
                     
             except Exception as e:
-                print(f"{UIConfig.ERROR_ICON} Error en validación: {e}")
+                print(f"❌ Error en validación: {e}")
                 return 1
     
     # Determinar opciones

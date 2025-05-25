@@ -2,6 +2,7 @@
 # -*- coding: utf-8 -*-
 """
 Procesador de datos para consultas de procesos judiciales
+Incluye actuaciones y anotaciones
 """
 
 import logging
@@ -27,6 +28,8 @@ class ProcesoInfo:
     clase_proceso: str = ProcessConfig.NO_DATA_PLACEHOLDER
     subclase_proceso: str = ProcessConfig.NO_DATA_PLACEHOLDER
     fecha_ultima_actuacion: str = ProcessConfig.NO_DATA_PLACEHOLDER
+    ultima_actuacion: str = ProcessConfig.NO_DATA_PLACEHOLDER  # NUEVO
+    anotaciones: str = ProcessConfig.NO_DATA_PLACEHOLDER  # NUEVO
     es_privado: bool = False
     status: str = ProcessConfig.Status.SUCCESS
 
@@ -109,6 +112,68 @@ class ProcesosProcessor:
             logger.error(f"Error al extraer sujetos procesales: {e}")
         
         return demandante, demandado
+    
+    def extraer_ultima_actuacion(self, actuaciones_data: Dict[str, Any]) -> str:
+        """
+        Extrae la descripción de la última actuación
+        
+        Args:
+            actuaciones_data: Datos de actuaciones del proceso
+            
+        Returns:
+            Descripción de la última actuación
+        """
+        if not actuaciones_data:
+            return ProcessConfig.NO_DATA_PLACEHOLDER
+        
+        try:
+            actuaciones = actuaciones_data.get('actuaciones', [])
+            if actuaciones and len(actuaciones) > 0:
+                # Tomar la primera actuación (más reciente)
+                ultima = actuaciones[0]
+                actuacion = ultima.get('actuacion', '')
+                
+                if actuacion:
+                    # Limpiar y formatear
+                    actuacion_limpia = " ".join(actuacion.split())
+                    return actuacion_limpia
+                    
+        except Exception as e:
+            logger.error(f"Error al extraer última actuación: {e}")
+        
+        return ProcessConfig.NO_DATA_PLACEHOLDER
+    
+    def extraer_anotaciones(self, actuaciones_data: Dict[str, Any]) -> str:
+        """
+        Extrae las anotaciones de las actuaciones
+        
+        Args:
+            actuaciones_data: Datos de actuaciones del proceso
+            
+        Returns:
+            Anotaciones concatenadas
+        """
+        if not actuaciones_data:
+            return ProcessConfig.NO_DATA_PLACEHOLDER
+        
+        try:
+            actuaciones = actuaciones_data.get('actuaciones', [])
+            anotaciones_list = []
+            
+            for actuacion in actuaciones[:3]:  # Solo las 3 más recientes
+                anotacion = actuacion.get('anotacion', '')
+                if anotacion and anotacion.strip():
+                    anotacion_limpia = " ".join(anotacion.split())
+                    anotaciones_list.append(anotacion_limpia)
+            
+            if anotaciones_list:
+                # Unir las anotaciones con separador
+                return " | ".join(anotaciones_list)
+                
+        except Exception as e:
+            logger.error(f"Error al extraer anotaciones: {e}")
+        
+        return ProcessConfig.NO_DATA_PLACEHOLDER
     
     def formatear_fecha(self, fecha_str: str) -> str:
         """
@@ -196,6 +261,8 @@ class ProcesosProcessor:
             juzgado=juzgado,
             departamento=departamento,
             fecha_ultima_actuacion=fecha_formateada,
+            ultima_actuacion="PROCESO PRIVADO - Información restringida",
+            anotaciones="PROCESO PRIVADO - Información restringida",
             es_privado=True,
             status=ProcessConfig.Status.PRIVATE
         )
@@ -204,6 +271,7 @@ class ProcesosProcessor:
         """Procesa un proceso normal con información completa"""
         proceso_basico = datos_proceso.get('proceso_basico', {})
         detalle = datos_proceso.get('detalle', {})
+        actuaciones = datos_proceso.get('actuaciones', {})
         radicado = datos_proceso.get('radicado', 'UNKNOWN')
         
         # Extraer sujetos procesales
@@ -221,6 +289,10 @@ class ProcesosProcessor:
         clase_proceso = detalle.get('claseProceso', ProcessConfig.NO_DATA_PLACEHOLDER)
         subclase_proceso = detalle.get('subclaseProceso', ProcessConfig.NO_DATA_PLACEHOLDER)
         
+        # Extraer actuaciones y anotaciones (NUEVO)
+        ultima_actuacion = self.extraer_ultima_actuacion(actuaciones)
+        anotaciones = self.extraer_anotaciones(actuaciones)
+        
         logger.debug(f"Procesando proceso normal: {radicado}")
         
         return ProcesoInfo(
@@ -233,6 +305,8 @@ class ProcesosProcessor:
             clase_proceso=clase_proceso,
             subclase_proceso=subclase_proceso,
             fecha_ultima_actuacion=fecha_formateada,
+            ultima_actuacion=ultima_actuacion,  # NUEVO
+            anotaciones=anotaciones,  # NUEVO
             es_privado=False,
             status=ProcessConfig.Status.SUCCESS
         )
@@ -266,7 +340,7 @@ Información disponible:
     
     def _formatear_proceso_normal(self, proceso_info: ProcesoInfo) -> str:
         """Formatea un proceso normal"""
-        return f"""{UIConfig.SEPARATOR_RESULT}
+        resultado = f"""{UIConfig.SEPARATOR_RESULT}
 Radicado del proceso: {proceso_info.radicado}
 Información del proceso:
   Demandante: {proceso_info.demandante}
@@ -276,8 +350,19 @@ Información del proceso:
   Tipo del proceso: {proceso_info.tipo_proceso}
   Clase del proceso: {proceso_info.clase_proceso}
   Subclase del proceso: {proceso_info.subclase_proceso}
-  Última fecha de actuación: {proceso_info.fecha_ultima_actuacion}
-{UIConfig.SEPARATOR_RESULT}"""
+  Última fecha de actuación: {proceso_info.fecha_ultima_actuacion}"""
+        
+        # Agregar actuación si está disponible
+        if proceso_info.ultima_actuacion != ProcessConfig.NO_DATA_PLACEHOLDER:
+            resultado += f"\n  Última actuación: {proceso_info.ultima_actuacion}"
+        
+        # Agregar anotaciones si están disponibles
+        if proceso_info.anotaciones != ProcessConfig.NO_DATA_PLACEHOLDER:
+            resultado += f"\n  Anotaciones: {proceso_info.anotaciones}"
+        
+        resultado += f"\n{UIConfig.SEPARATOR_RESULT}"
+        
+        return resultado
     
     def procesar_lote_procesos(self, lista_datos_procesos: List[Dict[str, Any]]) -> List[ProcesoInfo]:
         """
